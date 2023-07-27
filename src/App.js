@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import StatsTable from './Components/StatsTable';
+import calculateFlavanoidsStats from './helper/calculateFlavanoidsStats';
+import calculateGammaStats from './helper/calculateGammaStats';
 
 function App() {
+  const flavanoidsStats = calculateFlavanoidsStats();
+  const gammaStats = calculateGammaStats();
+  console.log('wineData', flavanoidsStats);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Flavanoids Stats</h2>
+      <StatsTable data={flavanoidsStats} setOff="Flavanoid" />
+
+      <h2>Gamma Stats</h2>
+      <StatsTable data={gammaStats} setOff="Gamma" />
     </div>
   );
 }
